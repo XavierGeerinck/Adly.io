@@ -10,11 +10,14 @@
             // @todo: Move to it's own file
             var AdDisplay = React.createClass({
                 handleOnClick: function() {
+                    // We clicked the ad, send that we clicked it
+                    dataChannel.send("Clicked on ad: " + this.props.name);
+
+                    // Open the ad
                     window.open(this.props.url);
                 },
 
                 render: function() {
-                    console.log(this.props);
                     return (
                         <img src={this.props.image} name={this.props.name} onClick={this.handleOnClick} />
                     );
@@ -30,7 +33,6 @@
 
                 onAdReceived: function(e) {
                     var data = JSON.parse(e.data);
-                    console.log(data);
 
                     this.setState({ image: data.image, name: data.name, url: data.url });
                 },
@@ -49,7 +51,6 @@
         <script src="js/peer.js"></script>
     </head>
     <body>
-        <img id="test" />
         <div id="container"></div>
 
     </body>
