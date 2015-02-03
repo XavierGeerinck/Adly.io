@@ -107,6 +107,11 @@ wss.on('connection', function(ws) {
                 }
 
                 i = 0;
+                channel.send(JSON.stringify({
+                    image: images[i % images.length].imageBase64,
+                    url: images[i % images.length].url,
+                    name: images[i % images.length].name
+                }));
                 setInterval(function() {
                     channel.send(JSON.stringify({
                         image: images[i % images.length].imageBase64,
