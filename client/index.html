@@ -1,24 +1,57 @@
 <html>
     <head>
-        <script src="js/lib/react/react.min.js"></script>
+        <script src="js/lib/react/react.js"></script>
         <script src="js/lib/react/JSXTransformer.js"></script>
+
+
+        <script type="text/jsx">
+            var dataChannel = doCreateDataChannels();
+
+            // @todo: Move to it's own file
+            var AdDisplay = React.createClass({
+                render: function() {
+                    return (
+                        <img src="{this.props.base64Image}" name="{this.props.name}" onClick={this.openUrl} />
+                    );
+                },
+
+                openUrl: function(url) {
+                    window.open(this.props.url);
+                }
+            });
+
+            var AdSystem = React.createClass({
+                getInitialState: function() {
+
+
+                    dataChannel.onmessage = this.onAdReceived;
+
+                    return { adData: {} };
+                },
+
+                onAdReceived: function(e) {
+                    var data = JSON.parse(e.data);
+                    console.log(data);
+                    adData = data;
+                    this.setState({ adData: data });
+                },
+
+                render: function() {
+                    return (
+                        <AdDisplay base64Image={this.state.adData.image} name="" url={this.state.url} />
+                    );
+                }
+            });
+
+            React.renderComponent(<AdSystem/>, document.body);
+        </script>
+
         <script src="js/lib/wrtc.js"></script>
         <script src="js/peer.js"></script>
     </head>
     <body>
         <img id="test" />
         <div id="container"></div>
-        
-        <script type="text/jsx">
-            var adContainer = React.createClass({
-                render: function() {
-                    <img src="{this.}">
-                };
-            });
-            React.render(
-                <h1>Hello World!</h1>,
-                document.getElementById('example')
-            );
-        </script>
+
     </body>
 </html>
