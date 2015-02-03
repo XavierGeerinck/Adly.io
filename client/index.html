@@ -1,6 +1,24 @@
 <html>
-<body></body>
-<script src="js/lib/wrtc.js"></script>
-<script src="js/peer.js"></script>
-<img id="test" />
+    <head>
+        <script src="js/lib/react/react.min.js"></script>
+        <script src="js/lib/react/JSXTransformer.js"></script>
+        <script src="js/lib/wrtc.js"></script>
+        <script src="js/peer.js"></script>
+    </head>
+    <body>
+        <img id="test" />
+        <div id="container"></div>
+        
+        <script type="text/jsx">
+            var adContainer = React.createClass({
+                render: function() {
+                    <img src="{this.}">
+                };
+            });
+            React.render(
+                <h1>Hello World!</h1>,
+                document.getElementById('example')
+            );
+        </script>
+    </body>
 </html>
