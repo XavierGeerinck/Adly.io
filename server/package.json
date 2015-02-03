@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "NodeJS WebRTC server to serve ads",
+  "main": "app.js",
+  "dependencies": {
+    "minimist": "^1.1.0",
+    "wrtc": "0.0.46",
+    "ws": "^0.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Xavier Geerinck",
+  "license": "ISC"
+}
