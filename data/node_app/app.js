@@ -20,7 +20,7 @@ var pendingDataChannels = {};
 var dataChannels = {}
 var pendingCandidates = [];
 
-var socketPort = 9001;
+var socketPort = 8080;
 
 var ads = [];
 

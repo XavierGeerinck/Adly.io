@@ -1,0 +1,1 @@
+2015/02/15 15:26:23 [error] 9#0: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.17.8.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost.com"

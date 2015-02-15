@@ -1,5 +1,5 @@
-var host = '192.168.33.10';
-var bridge = host + ':9001';
+var host = 'localhost.com';
+var bridge = host + ':8080';
 
 var RTCPeerConnection = wrtc.RTCPeerConnection;
 var RTCSessionDescription = wrtc.RTCSessionDescription;
