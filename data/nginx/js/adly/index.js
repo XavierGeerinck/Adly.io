@@ -169,7 +169,7 @@ function doSendOffer(offer) {
         data = JSON.parse(event.data);
         if ('answer' == data.type) {
             doSetRemoteDesc(data);
-        } else if ('ice' == data.type) {
+        } else if ('ice' == data.type && data.sdp.candidate) {
             var candidate = new RTCIceCandidate(data.sdp.candidate);
             if (candidate.candidate) {
                 pc.addIceCandidate(candidate, handleAddIceCandidateSuccess, handleAddIceCandidateError);

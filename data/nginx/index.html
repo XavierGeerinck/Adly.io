@@ -42,8 +42,9 @@
             },
 
             render: function() {
+                // src={this.props.image}
                 return (
-                    <img width={this.props.width} height={this.props.height} src={this.props.image} name={this.props.name} onClick={this.handleOnClick} />
+                    <img width={this.props.width} height={this.props.height} name={this.props.name} onClick={this.handleOnClick} src={this.props.image}/>
                 );
             }
         });
@@ -68,7 +69,22 @@
             }
         });
 
-        React.renderComponent(<AdSystem height="100%" width="100%"/>, document.querySelector('AdSystem'));
+        function randomString(len, an){
+            an = an&&an.toLowerCase();
+            var str="", i=0, min=an=="a"?10:0, max=an=="n"?10:62;
+            for(;i++<len;){
+              var r = Math.random()*(max-min)+min <<0;
+              str += String.fromCharCode(r+=r>9?r<36?55:61:48);
+            }
+            return str;
+        }
+
+        // Dynamically create a new element instead of the AdSystem and show this one
+        var adSystemElement = document.querySelector('AdSystem');
+        var newElement = document.createElement('div');
+        newElement.id = randomString(10);
+        adSystemElement.parentNode.replaceChild(newElement, adSystemElement);
+        React.render(<AdSystem height="100%" width="100%"/>, newElement);
     </script>
 
     <script src="js/lib/wrtc.js"></script>

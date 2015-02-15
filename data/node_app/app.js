@@ -105,6 +105,8 @@ wss.on('connection', function(ws) {
                         name: ads[index].title
                     }));
 
+                    ads[index].viewCount++;
+                    console.info("Ad " + ads[index].title + " viewed " + ads[index].viewCount + " times");
                     setTimeout(loop, 5000);
                 })();
             };
