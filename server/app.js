@@ -47,6 +47,7 @@ var images = [
 var wss = new ws.Server({
     'port': socketPort
 });
+
 wss.on('connection', function(ws) {
     console.info('ws connected');
 
